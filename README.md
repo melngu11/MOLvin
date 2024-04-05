@@ -8,3 +8,7 @@ JT-VAE, GAN and reinforcement learning integration for drug discovery
 			- ensure in correct working dir.
 	- Create a container 
 		- ```docker run -d --gpus all -it --name <your_container_name> -v <path_to_host_dir>:/<container_dest_dir> <your_image>```
+        - detached terminal 
+    - Attach terminal to container
+        - ```docker exec -it <container_name/ID> /bin/bash```
+        
