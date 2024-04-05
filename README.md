@@ -12,3 +12,7 @@ JT-VAE, GAN and reinforcement learning integration for drug discovery
     - Attach terminal to container
         - ```docker exec -it <container_name/ID> /bin/bash```
         
+
+- Dependencies
+	- ```pip install deepchem rdkit numpy tensorflow matplotlib seaborn pandas jax jaxlib torch-geometric torch torchvision torchaudio```
+		- Reference PyTorch for machine dependent install: https://pytorch.org/get-started/locally/
