@@ -1,7 +1,7 @@
 # MOLvin
 JT-VAE, GAN and reinforcement learning integration for drug discovery
 
-
+*PIP: Create script/dockerfile of following commands for easy assembly*
 - WSL Commands Docker
 	- Build image with Dockerfile:
 		- ```docker build -t <new_image> .```
