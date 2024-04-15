@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/molvin_ws/MOLvin/explore.py", line 313, in <module>
+    main()
+  File "/molvin_ws/MOLvin/explore.py", line 288, in main
+    molGAN_model = create_model(df, filtered_valid_smiles, max_atoms)
+  File "/molvin_ws/MOLvin/explore.py", line 237, in create_model
+    gan = MolGAN(learning_rate=ExponentialDecay(0.001, 0.9, 5000), vertices=num_atoms)
+  File "/usr/local/lib/python3.10/site-packages/deepchem/models/molgan.py", line 89, in __init__
+    super(BasicMolGANModel, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/site-packages/deepchem/models/gan.py", line 513, in __init__
+    super(WGAN, self).__init__(**kwargs)
+  File "/usr/local/lib/python3.10/site-packages/deepchem/models/gan.py", line 86, in __init__
+    self.data_inputs = [i.ref() for i in self.data_input_layers]
+  File "/usr/local/lib/python3.10/site-packages/deepchem/models/gan.py", line 86, in <listcomp>
+    self.data_inputs = [i.ref() for i in self.data_input_layers]
+AttributeError: 'KerasTensor' object has no attribute 'ref'
+
