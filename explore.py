@@ -289,7 +289,7 @@ def main():
     print(f"Number of valid SMILES strings: {len(filtered_valid_smiles)}")
     
     molGAN_model, DATASET = create_model(df, filtered_valid_smiles, max_atoms) #create_model outputs a tuple of the model and the dataset...
-    molGAN_model = create_model(df, filtered_valid_smiles, max_atoms)
+    generated_mols = train_model(molGAN_model, DATASET, 25) #train_model outputs the generated molecules from the model and dataset returned from create_model...
     
     nmols = feat.defeaturize(generated_mols)
     print(f"{len(nmols)} unique valid molecules generated")
