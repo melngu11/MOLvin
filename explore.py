@@ -1,8 +1,11 @@
 # Import necessary libraries
 import deepchem as dc
-import deepchem.models
+# import deepchem.models
+from deepchem.models import GAN
 from deepchem.feat.molecule_featurizers.molgan_featurizer import GraphMatrix
-from deepchem.models import BasicMolGANModel as MolGAN
+#from deepchem.models import BasicMolGANModel as MolGAN
+from deepchem.models.molgan import BasicMolGANModel as MolGAN
+from deepchem.data.datasets import NumpyDataset as DS
 from deepchem.models.optimizers import ExponentialDecay
 
 import tensorflow as tf
@@ -13,7 +16,7 @@ import seaborn as sns
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 # from rdkit.Chem.Draw import IPythonConsole
-# from rdkit.Chem import Draw
+from rdkit.Chem import Draw
 
 import numpy as np
 import pandas as pd
