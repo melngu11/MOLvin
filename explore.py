@@ -238,7 +238,7 @@ def create_feature_and_filter(data , num_atoms, atom_labels):
 
 def create_model(data, features, num_atoms):
     gan = MolGAN(learning_rate=ExponentialDecay(0.001, 0.9, 5000), vertices=num_atoms)
-    dataset = dc.data.NumpyDataset([x.adjacency_matrix for x in features], [x.node_features for x in features])
+    dataset = DS([x.adjacency_matrix for x in features], [x.node_features for x in features])
     return gan, dataset
 
 def iterbatches(epochs, gan, dataset):
@@ -288,9 +288,9 @@ def main():
     filtered_valid_smiles, feat = create_feature_and_filter(df, max_atoms, [0, 5, 6, 7, 8, 9, 11, 12, 13, 14])  #15, 16, 17, 19, 20, 24, 29, 35, 53, 80])
     print(f"Number of valid SMILES strings: {len(filtered_valid_smiles)}")
     
+    molGAN_model, DATASET = create_model(df, filtered_valid_smiles, max_atoms) #create_model outputs a tuple of the model and the dataset...
     molGAN_model = create_model(df, filtered_valid_smiles, max_atoms)
     
-    generated_mols = train_model(molGAN_model, filtered_valid_smiles, iterbatches(25))
     nmols = feat.defeaturize(generated_mols)
     print(f"{len(nmols)} unique valid molecules generated")
     # Remove invalid molecules from the list
