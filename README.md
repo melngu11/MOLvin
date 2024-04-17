@@ -16,3 +16,7 @@ JT-VAE, GAN and reinforcement learning integration for drug discovery
 - Dependencies
 	- ```pip install deepchem rdkit numpy tensorflow matplotlib seaborn pandas jax jaxlib torch-geometric torch torchvision torchaudio```
 		- Reference PyTorch for machine dependent install: https://pytorch.org/get-started/locally/
+---
+
+
+*Updated explore.py should address issues in the current error log*
