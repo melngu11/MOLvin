@@ -15,16 +15,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from rdkit import Chem
 from rdkit.Chem import Descriptors
-# from rdkit.Chem.Draw import IPythonConsole
 from rdkit.Chem import Draw
+from collections import OrderedDict
 
 import numpy as np
 import pandas as pd
 import os
 import random
 import matplotlib.pyplot as plt
-from collections import OrderedDict
-
 
 
 base_output_dir = './data/run_data'
@@ -292,18 +290,19 @@ def main():
     generated_mols = train_model(molGAN_model, DATASET, 25) #train_model outputs the generated molecules from the model and dataset returned from create_model...
     
     nmols = feat.defeaturize(generated_mols)
-    print(f"{len(nmols)} unique valid molecules generated")
+    print(f"{len(nmols)} molecules generated")
     # Remove invalid molecules from the list
+    print("Removing invalid molecules...")
     nmols = list(filter(lambda x: x is not None, nmols))    
     print ("{} valid molecules".format(len(nmols)))
-    
+
     nmols_smiles = [Chem.MolToSmiles(m) for m in nmols]
     nmols_smiles_unique = list(OrderedDict.fromkeys(nmols_smiles))
     nmols_viz = [Chem.MolFromSmiles(x) for x in nmols_smiles_unique]
     print ("{} unique valid molecules".format(len(nmols_viz)))
-    
+
     # Draw the molecules
-    img = Draw.MolsToGridImage(nmols_viz[0:100], molsPerRow=5, subImgSize=(250, 250), maxMols=100, legends=None, returnPNG=False)
+    img = Draw.MolsToGridImage(nmols_viz[:1000], molsPerRow=5, subImgSize=(250, 250), legends=None, highlightAtomLists=None, highlightBondLists=None, useSVG=False, returnPNG=False)
     img.show()
     
     
